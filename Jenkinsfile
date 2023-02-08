@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Hello') {
+  stage('Hello') {
       steps {
         echo 'Hello'
         sh 'pwd'
@@ -14,6 +14,14 @@ pipeline {
         sh 'pwd'
         sh 'ls'
       }
+    }
+    stage('Optional') {
+    when {
+    	branch "deb-123"
+    }
+    steps{
+    	echo "deb branch running"
+    }
     }
   }
 }
